@@ -448,9 +448,11 @@ slope, intercept, r_value, p_value, std_err = linregress(
 model_dict["gallons"] = (slope, intercept, r_value, p_value, std_err)
 
 fig, ax1 = plt.subplots(figsize=fig_size)
-ax1.scatter(df.index, df.trip, alpha=0.5, label="Miles")
+ax1.scatter(df.index, df.trip, alpha=0.5, marker="<", label="Miles")
 ax2 = ax1.twinx()
-ax2.scatter(df.index, df.gallons, color="tab:orange", alpha=0.5, label="Gallons")
+ax2.scatter(
+    df.index, df.gallons, color="tab:orange", alpha=0.5, marker="4", label="Gallons"
+)
 ax1.grid(alpha=0.25)
 ax1.legend(loc="lower left")
 ax2.legend(loc="lower right")
@@ -738,16 +740,25 @@ ax1.bar(
     [*range(1, 12 + 1)],
     df.groupby(df.index.month).max(numeric_only=True).mpg,
     label="Max",
+    hatch="/",
+    edgecolor="white",
+    linewidth=0,
 )
 ax1.bar(
     [*range(1, 12 + 1)],
     df.groupby(df.index.month).mean(numeric_only=True).mpg,
     label="Mean",
+    hatch=".",
+    edgecolor="white",
+    linewidth=0,
 )
 ax1.bar(
     [*range(1, 12 + 1)],
     df.groupby(df.index.month).min(numeric_only=True).mpg,
     label="Min",
+    hatch="\\",
+    edgecolor="white",
+    linewidth=0,
 )
 ax1.grid(alpha=0.25)
 ax1.legend(loc="lower left")
@@ -964,18 +975,21 @@ ax1.scatter(
     gdf[(gdf["min_mi_idx"] == "lj_mi")].mpg,
     alpha=0.3,
     label="La Jolla",
+    marker="<",
 )
 ax1.scatter(
     gdf[(gdf["min_mi_idx"] == "sf_mi")].min_mi,
     gdf[(gdf["min_mi_idx"] == "sf_mi")].mpg,
     alpha=0.3,
     label="San Francisco",
+    marker=".",
 )
 ax1.scatter(
     gdf[(gdf["min_mi_idx"] == "sd_mi")].min_mi,
     gdf[(gdf["min_mi_idx"] == "sd_mi")].mpg,
     alpha=0.3,
     label="San Diego",
+    marker="4",
 )
 ax1.grid(alpha=0.25)
 ax1.legend(loc="upper right")
@@ -992,18 +1006,21 @@ ax1.scatter(
     gdf[(gdf["min_mi_idx"] == "lj_mi")].mpg,
     alpha=0.3,
     label="La Jolla",
+    marker="<",
 )
 ax1.scatter(
     gdf[(gdf["min_mi_idx"] == "sf_mi")].min_mi,
     gdf[(gdf["min_mi_idx"] == "sf_mi")].mpg,
     alpha=0.3,
     label="San Francisco",
+    marker=".",
 )
 ax1.scatter(
     gdf[(gdf["min_mi_idx"] == "sd_mi")].min_mi,
     gdf[(gdf["min_mi_idx"] == "sd_mi")].mpg,
     alpha=0.3,
     label="San Diego",
+    marker="4",
 )
 ax1.set_xscale("log")
 ax1.grid(alpha=0.25)
@@ -1045,9 +1062,14 @@ ax1.set_title("Distance from home versus mileage per home")
 #     2. Using .py allows me to autoformat code upon saving with Python black
 #     3. I also can use text editor features that aren't supported in Jupyter
 # 4. I learned a lot about my Suzuki and my driving habits between San Diego and San Francisco
+# 5. The version of the *Tableau 10* default color palette in Matplotlib is not very accessible
+#     1. Thanks [Marian](https://github.com/mmdski)!
+#     2. You can see Tableau's updated palette [here](https://www.tableau.com/blog/colors-upgrade-tableau-10-56782)
 #
 # I don't know that any of these regression models are particularly useful. Maybe if I wanted to forecast fuel and / or maintenance costs. In this case, I would probably want to use a model that weights more recent driving heavier than older data since I have not been driving much.
 #
 # I spent a great deal of time on this write up so I could share and hopefully mentor people in data analysis.
 #
 # I hope you got some value and maybe even a little enjoyment out of this. -- Nick
+
+# %%
