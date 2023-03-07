@@ -764,7 +764,7 @@ ax1.grid(alpha=0.25)
 ax1.legend(loc="lower left")
 ax1.set_ylim(mpg_lim[0], mpg_lim[1])
 ax1.set_xlabel("Month")
-ax1.set_ylabel("MPG")
+ax1.set_ylabel("MPG (mi / gal)")
 ax1.set_xticks(range(1, 12 + 1))
 ax1.set_title("Suzuki mpg by month")
 
@@ -964,7 +964,7 @@ ax1.plot(
 ax1.grid(alpha=0.25)
 ax1.legend(loc="upper right")
 ax1.set_xlabel("Distance from home (mi)")
-ax1.set_ylabel("Mileage (mi / gal)")
+ax1.set_ylabel("MPG (mi / gal)")
 ax1.set_title("Distance from home versus mileage")
 
 # plot distance from home versus mileage, per home
@@ -995,7 +995,7 @@ ax1.grid(alpha=0.25)
 ax1.legend(loc="upper right")
 ax1.set_ylim(mpg_lim[0], mpg_lim[1])
 ax1.set_xlabel("Distance from home (mi)")
-ax1.set_ylabel("Mileage (mi / gal)")
+ax1.set_ylabel("MPG (mi / gal)")
 ax1.set_title("Distance from home versus mileage per home")
 
 # plot distance from home versus mileage, log x, per home
@@ -1027,7 +1027,7 @@ ax1.grid(alpha=0.25)
 ax1.legend(loc="upper right")
 ax1.set_ylim(mpg_lim[0], mpg_lim[1])
 ax1.set_xlabel("Distance from home (log, mi)")
-ax1.set_ylabel("Mileage (mi / gal)")
+ax1.set_ylabel("MPG (mi / gal)")
 ax1.set_title("Distance from home versus mileage per home")
 
 # %% [markdown]
